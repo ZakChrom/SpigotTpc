@@ -365,7 +365,6 @@ function execPacket(data, ws) {
     kickWS(ws);
     return;
   }
-    
   switch (args[0]) {
     case "place":
       if (args.length != 6) {
