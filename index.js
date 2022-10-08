@@ -236,7 +236,7 @@ async function main(a) {
       }
     }
     console.log(
-      `Server should be online, at ws://${server.address.address}:${server.port}/`,
+      `Server should be online, at ws://${ip}:${port}/`,
     );
   }
     
@@ -360,12 +360,12 @@ function execPacket(data, ws) {
     ]);
   }
 
-  if (bannedPackets.includes(args.first) || typeBasedPackets.includes(args.first)) {
-    console.log(`Kicking user for sending banned packet ${args.first}`);
+  if (bannedPackets.includes(args[0]) || typeBasedPackets.includes(args[0])) {
+    console.log(`Kicking user for sending banned packet ${args[0]}`);
     kickWS(ws);
     return;
   }
-    
+
   switch (args[0]) {
     case "place":
       if (args.length != 6) {
@@ -406,7 +406,7 @@ function execPacket(data, ws) {
       var y = parseInt(args[2]);
       if (wrap) {
         x = (x + grid().length) % grid().length;
-        y = (y + grid()[grid().length].length) % grid().first.length;
+        y = (y + grid()[grid().length].length) % grid()[0].length;
       }
 
       if (!insideGrid(x, y)) break;
